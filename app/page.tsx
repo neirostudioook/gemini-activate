@@ -350,7 +350,7 @@ export default function Home() {
                 className="btn-success"
                 id="activate-btn"
               >
-                ✦ Получить Gemini 3.1 Pro
+                ✦ Получить GEMINI BUSSINESS
               </a>
 
               <div className="glass-card px-6 py-4 max-w-md" style={{ background: "rgba(66, 133, 244, 0.04)" }}>
