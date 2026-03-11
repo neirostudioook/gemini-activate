@@ -223,7 +223,7 @@ export default function Home() {
                 <GeminiLogo />
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-                Активировать <span className="gemini-gradient">Gemini 3.1 Pro</span>
+                Активировать <span className="gemini-gradient">GEMINI BUSSINESS</span>
               </h1>
               <p className="text-[var(--text-secondary)] text-lg mb-10 max-w-md leading-relaxed">
                 Введите email вашего Google Workspace аккаунта для активации подписки Gemini 3.1 Pro
