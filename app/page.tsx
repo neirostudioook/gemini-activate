@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 type AppState = "input" | "loading" | "success" | "activated" | "not-found";
 
@@ -8,10 +8,10 @@ const ACTIVATION_URL =
   "https://business.gemini.google/?_gl=1*m9k33*_ga*MTM5MDg0MjAwNC4xNzQwNzY1MjUx*_ga_WH2QY8WWF5*czE3NzMyMjUzNzQkbzQ4JGcxJHQxNzczMjI2OTU2JGo2MCRsMCRoMA..";
 
 const LOADING_STEPS = [
-  { label: "Verifying Google account...", duration: 8000 },
-  { label: "Checking eligibility...", duration: 7000 },
-  { label: "Configuring Gemini Business...", duration: 8000 },
-  { label: "Activating subscription...", duration: 7000 },
+  { label: "Проверка аккаунта Google...", duration: 8000 },
+  { label: "Проверка доступности...", duration: 7000 },
+  { label: "Настройка Gemini 3.1 Pro...", duration: 8000 },
+  { label: "Активация подписки...", duration: 7000 },
 ];
 
 function GeminiLogo() {
@@ -122,14 +122,12 @@ export default function Home() {
     let elapsed = 0;
     const totalDuration = LOADING_STEPS.reduce((sum, s) => sum + s.duration, 0);
 
-    // Progress bar
     const progressInterval = setInterval(() => {
       elapsed += 100;
       const pct = Math.min((elapsed / totalDuration) * 100, 99);
       setProgress(pct);
     }, 100);
 
-    // Step transitions
     let stepAccum = 0;
     LOADING_STEPS.forEach((step, index) => {
       stepAccum += step.duration;
@@ -140,7 +138,6 @@ export default function Home() {
       }
     });
 
-    // Complete
     setTimeout(() => {
       clearInterval(progressInterval);
       setProgress(100);
@@ -207,12 +204,12 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <GeminiLogo />
               <span className="text-lg font-semibold tracking-tight">
-                Gemini <span className="text-[var(--text-secondary)]">Business</span>
+                Gemini <span className="text-[var(--text-secondary)]">3.1 Pro</span>
               </span>
             </div>
             <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
               <ShieldIcon />
-              <span className="hidden sm:inline">Secure activation</span>
+              <span className="hidden sm:inline">Безопасная активация</span>
             </div>
           </div>
         </header>
@@ -226,10 +223,10 @@ export default function Home() {
                 <GeminiLogo />
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-                Activate <span className="gemini-gradient">Gemini Business</span>
+                Активировать <span className="gemini-gradient">Gemini 3.1 Pro</span>
               </h1>
               <p className="text-[var(--text-secondary)] text-lg mb-10 max-w-md leading-relaxed">
-                Enter your Google Workspace email to activate your Gemini Business subscription
+                Введите email вашего Google Workspace аккаунта для активации подписки Gemini 3.1 Pro
               </p>
 
               <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4">
@@ -246,7 +243,7 @@ export default function Home() {
                   <p className="text-red-400 text-sm" style={{ animation: "fade-in 0.3s ease-out" }}>{error}</p>
                 )}
                 <button type="submit" className="btn-primary" id="check-access-btn">
-                  <span>Check access</span>
+                  <span>Проверить доступ</span>
                 </button>
               </form>
 
@@ -256,27 +253,27 @@ export default function Home() {
                   <div className="feature-icon" style={{ background: "rgba(66, 133, 244, 0.1)", color: "#4285f4" }}>
                     <ZapIcon />
                   </div>
-                  <h3 className="font-semibold mb-1 text-sm">Advanced AI</h3>
+                  <h3 className="font-semibold mb-1 text-sm">Продвинутый ИИ</h3>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Access Gemini 2.0 Pro with extended context window and multimodal capabilities
+                    Доступ к Gemini 3.1 Pro с расширенным контекстным окном и мультимодальными возможностями
                   </p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon" style={{ background: "rgba(168, 85, 247, 0.1)", color: "#a855f7" }}>
                     <ShieldIcon />
                   </div>
-                  <h3 className="font-semibold mb-1 text-sm">Enterprise Security</h3>
+                  <h3 className="font-semibold mb-1 text-sm">Корпоративная безопасность</h3>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Data protection compliant with enterprise-grade security standards
+                    Защита данных в соответствии с корпоративными стандартами безопасности
                   </p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon" style={{ background: "rgba(236, 72, 153, 0.1)", color: "#ec4899" }}>
                     <StarIcon />
                   </div>
-                  <h3 className="font-semibold mb-1 text-sm">Workspace Integration</h3>
+                  <h3 className="font-semibold mb-1 text-sm">Интеграция с Workspace</h3>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Seamless integration with Gmail, Docs, Sheets, and more
+                    Бесшовная интеграция с Gmail, Docs, Sheets и другими сервисами Google
                   </p>
                 </div>
               </div>
@@ -294,7 +291,7 @@ export default function Home() {
               </div>
 
               <div className="text-center">
-                <h2 className="text-xl font-semibold mb-2">Setting up your subscription</h2>
+                <h2 className="text-xl font-semibold mb-2">Настраиваем вашу подписку</h2>
                 <p className="text-sm text-[var(--text-secondary)]">{email}</p>
               </div>
 
@@ -326,7 +323,7 @@ export default function Home() {
               </div>
 
               <p className="text-xs text-[var(--text-secondary)] mt-2">
-                Please do not close this page
+                Пожалуйста, не закрывайте эту страницу
               </p>
             </div>
           )}
@@ -339,9 +336,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold mb-2">Subscription Ready!</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2">Подписка готова!</h2>
                 <p className="text-[var(--text-secondary)] mb-1">
-                  Gemini Business has been configured for
+                  Gemini 3.1 Pro настроен для аккаунта
                 </p>
                 <p className="text-[var(--gemini-blue)] font-medium">{email}</p>
               </div>
@@ -353,13 +350,13 @@ export default function Home() {
                 className="btn-success"
                 id="activate-btn"
               >
-                ✦ Activate Gemini Business
+                ✦ Получить Gemini 3.1 Pro
               </a>
 
               <div className="glass-card px-6 py-4 max-w-md" style={{ background: "rgba(66, 133, 244, 0.04)" }}>
                 <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  <span className="text-[var(--text-primary)] font-medium">Next step:</span>{" "}
-                  Follow the instructions on the Google website to complete activation. Sign in with the same email address.
+                  <span className="text-[var(--text-primary)] font-medium">Далее:</span>{" "}
+                  Следуйте инструкциям на сайте Google для завершения активации. Войдите с тем же email адресом.
                 </p>
               </div>
 
@@ -367,7 +364,7 @@ export default function Home() {
                 onClick={handleReset}
                 className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mt-4 cursor-pointer"
               >
-                ← Activate another account
+                ← Активировать другой аккаунт
               </button>
             </div>
           )}
@@ -377,11 +374,11 @@ export default function Home() {
             <div className="already-activated flex flex-col items-center gap-6">
               <AlertIcon />
               <div>
-                <h2 className="text-2xl font-bold mb-2">Already Activated</h2>
+                <h2 className="text-2xl font-bold mb-2">Уже активировано</h2>
                 <p className="text-[var(--text-secondary)] max-w-sm leading-relaxed">
-                  Gemini Business subscription has already been activated for{" "}
+                  Подписка Gemini 3.1 Pro уже была активирована для аккаунта{" "}
                   <span className="text-[var(--gemini-blue)]">{email}</span>.
-                  If you need assistance, contact your administrator.
+                  Если вам нужна помощь, обратитесь к администратору.
                 </p>
               </div>
 
@@ -391,14 +388,14 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                <span>Go to Gemini Business →</span>
+                <span>Перейти к Gemini 3.1 Pro →</span>
               </a>
 
               <button
                 onClick={handleReset}
                 className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
               >
-                ← Try another email
+                ← Попробовать другой email
               </button>
             </div>
           )}
@@ -408,11 +405,9 @@ export default function Home() {
             <div className="already-activated flex flex-col items-center gap-6">
               <ErrorIcon />
               <div className="text-center">
-                <h2 className="text-2xl font-bold mb-2">Access Denied</h2>
+                <h2 className="text-2xl font-bold mb-2">Доступ запрещён</h2>
                 <p className="text-[var(--text-secondary)] max-w-sm leading-relaxed">
-                  The email <span className="text-[var(--text-primary)]">{email}</span> is not
-                  eligible for Gemini Business activation. Please check the email or contact your
-                  organization administrator.
+                  Email <span className="text-[var(--text-primary)]">{email}</span> не имеет права на активацию Gemini 3.1 Pro. Проверьте email или свяжитесь с администратором вашей организации.
                 </p>
               </div>
 
@@ -420,23 +415,11 @@ export default function Home() {
                 onClick={handleReset}
                 className="btn-primary"
               >
-                <span>← Try another email</span>
+                <span>← Попробовать другой email</span>
               </button>
             </div>
           )}
         </div>
-
-        {/* Footer */}
-        <footer className="w-full px-6 py-6 border-t border-[var(--border-subtle)]">
-          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-secondary)]">
-            <span>© {new Date().getFullYear()} Google LLC. All rights reserved.</span>
-            <div className="flex items-center gap-6">
-              <span className="cursor-pointer hover:text-[var(--text-primary)] transition-colors">Privacy</span>
-              <span className="cursor-pointer hover:text-[var(--text-primary)] transition-colors">Terms</span>
-              <span className="cursor-pointer hover:text-[var(--text-primary)] transition-colors">Help</span>
-            </div>
-          </div>
-        </footer>
       </main>
     </>
   );

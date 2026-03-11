@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Gemini Business — Activate Subscription",
+  title: "Gemini 3.1 Pro — Активация подписки",
   description:
-    "Activate your Gemini Business subscription. Get access to advanced AI features for your Google Workspace account.",
-  keywords: ["Gemini", "Business", "Google", "AI", "Subscription", "Activate"],
+    "Активируйте подписку Gemini 3.1 Pro. Получите доступ к продвинутым ИИ-функциям для вашего Google Workspace аккаунта.",
+  keywords: ["Gemini", "3.1 Pro", "Google", "AI", "Подписка", "Активация"],
   openGraph: {
-    title: "Gemini Business — Activate Subscription",
+    title: "Gemini 3.1 Pro — Активация подписки",
     description:
-      "Activate your Gemini Business subscription for your Google Workspace account.",
+      "Активируйте подписку Gemini 3.1 Pro для вашего Google Workspace аккаунта.",
     type: "website",
   },
 };
