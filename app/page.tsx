@@ -345,8 +345,6 @@ export default function Home() {
 
               <a
                 href={ACTIVATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="btn-success"
                 id="activate-btn"
               >
@@ -384,8 +382,6 @@ export default function Home() {
 
               <a
                 href={ACTIVATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="btn-primary"
               >
                 <span>Перейти к Gemini 3.1 Pro →</span>
